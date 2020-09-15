@@ -1,15 +1,16 @@
 package program;
 
+import entities.*;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args){
 
-        /*
+
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, user;
+        /*int processing, requisition, user;
 
         System.out.println("requisições por segundo: ");
         requisition = sc.nextInt();
@@ -20,7 +21,7 @@ public class Main {
         System.out.println("Usuários: ");
         user = sc.nextInt();
 
-        SingleQueue row = new SingleQueue(processing, requisition);
+        SingleServer row = new SingleServer(processing, requisition);
 
         System.out.println("Intensidade de tráfego: "+ row.trafficIntensity());
         System.out.println("nenhum usuário no sistema: "+ row.noUser());
@@ -32,28 +33,7 @@ public class Main {
         System.out.println("Número médio de usuários: " + row.avgUser());
         System.out.println("Número médio de requisições na fila:" + row.avgRequisition());
 
-        sc.close();
-
-
          */
-
-        Scanner sc = new Scanner(System.in);
-
-        /*int processing, requisition, server, user;
-
-        System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
-
-        System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
-
-        System.out.println("Número de Servidores: ");
-        server = sc.nextInt();
-
-        System.out.println("Usuários no sistema: ");
-        user = sc.nextInt();
-
-
 
         MServers mserver = new MServers(10, 12, 2);
 
@@ -68,17 +48,15 @@ public class Main {
         System.out.println("Tempo médio de resposta: " + mserver.avgTime());
         System.out.println("Tempo médio de espera na fila: " + mserver.avgWaitingTime());
 
+        System.out.println("--------------------------------------------------------");
+        InfiniteServers infiniteServers = new InfiniteServers(20,30);
 
-        InfiniteServers server = new InfiniteServers(20,30);
-
-        System.out.println("Ro: "+ server.ro());
-        System.out.println("5 usuarios: " + server.nRequisitions(5, 0.50));
-        System.out.println("numero media de suarios: " + server.ro());
-        System.out.println("tempo medio: " + server.avgTime());
-        System.out.println(server.factorial(5));
+        System.out.println("Ro: "+ infiniteServers.ro());
+        System.out.println("5 usuarios: " + infiniteServers.nRequisitions(5, 0.50));
+        System.out.println("numero media de suarios: " + infiniteServers.ro());
+        System.out.println("tempo medio: " + infiniteServers.avgTime());
 
 
-         */
 
         sc.close();
 

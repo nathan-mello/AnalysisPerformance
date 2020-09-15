@@ -34,7 +34,7 @@ public class SingleServer {
         if(trafficIntensity()>1){
             return 1.0;
         }
-        return (double) 1 - trafficIntensity();
+        return 1.0 - trafficIntensity();
     }
 
     public double nUser(int number){
