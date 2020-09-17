@@ -72,6 +72,7 @@ public class Menu {
         sc.close();
 
         }
+
     public static void optionInfiniteServers() {
 
         Scanner sc = new Scanner(System.in);
@@ -101,6 +102,84 @@ public class Menu {
 
 
         sc.close();
+    }
+
+    public static void optionFiniteCapacityServer() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int processing, requisition,server, user, rowB;
+
+
+        System.out.println("requisições por segundo: ");
+        requisition = sc.nextInt();
+
+        System.out.println("capacidade de processamento por /s:  ");
+        processing = sc.nextInt();
+
+        System.out.println("B: ");
+        rowB = sc.nextInt();
+
+        System.out.println("Servidor: ");
+        server = sc.nextInt();
+
+        System.out.println("Usuarios: ");
+        user = sc.nextInt();
+
+        FiniteCapacityServer row = new FiniteCapacityServer(requisition, processing, rowB, server);
+
+
+        System.out.println("Probabilidade de n usuários no Sistema: " + row.NRequisitions(user));
+        System.out.println("Variável 'rô': " + row.ro());
+        System.out.println("Probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
+        System.out.println("Utilização: " + row.utilization());
+        System.out.println("Taxa Efetiva de chegada: " + row.receivingRate());
+        System.out.println("Taxa de perda: " + row.lossRate());
+        System.out.println("Número  médio de usuários do Sistema: " + row.avgUsers());
+        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
+        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
+        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+
+        sc.close();
+
+    }
+
+    public static void optionFiniteCapacityMServer() {
+        Scanner sc = new Scanner(System.in);
+
+        int processing, requisition,server, user, rowB;
+
+
+        System.out.println("requisições por segundo: ");
+        requisition = sc.nextInt();
+
+        System.out.println("capacidade de processamento por /s:  ");
+        processing = sc.nextInt();
+
+        System.out.println("B: ");
+        rowB = sc.nextInt();
+
+        System.out.println("Servidor: ");
+        server = sc.nextInt();
+
+        System.out.println("Usuarios: ");
+        user = sc.nextInt();
+
+        FiniteCapacityMServers row = new FiniteCapacityMServers(requisition, processing, rowB, server);
+
+
+        System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
+        System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
+        System.out.println("Utilização: " + row.utilization());
+        System.out.println("Taxa efetiva de chegada: " + row.receivingRate());
+        System.out.println("Taxa de Perda: " + row.lossRate());
+        System.out.println("Número médio de usuários no sistema: " + row.avgUsers());
+        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
+        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
+        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+
+        sc.close();
+
     }
 
 }
