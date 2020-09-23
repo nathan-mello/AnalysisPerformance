@@ -81,7 +81,7 @@ public class FiniteCapacityServer {
 
     public double avgUsersQueue() {
         double p = ro();
-        double result = (rowB+1)*Math.pow(p, rowB+1);
+        double result = 1 + rowB * Math.pow(p, rowB);
 
         return  (p/(1-p))-p*(result/(1-Math.pow(p, rowB+1)));
     }
