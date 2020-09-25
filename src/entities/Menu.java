@@ -182,4 +182,76 @@ public class Menu {
 
     }
 
+    public static void optionFinitePopulationServer() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int processing, requisition, populacao, user;
+
+
+        System.out.println("requisições por segundo: ");
+        requisition = sc.nextInt();
+
+        System.out.println("capacidade de processamento por /s:  ");
+        processing = sc.nextInt();
+
+        System.out.println("Universo de Usuários: ");
+        populacao = sc.nextInt();
+
+        System.out.println("Usuários: ");
+        user = sc.nextInt();
+
+
+        FinitePopulationServer row = new FinitePopulationServer(requisition, processing, populacao);
+
+        System.out.println("Ro: " + row.ro());
+        System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
+        System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
+        System.out.println("Utilização: " + row.utilization());
+        System.out.println("Taxa efetiva de chegada: " + row.receivingRate());
+        System.out.println("Número médio de usuários no sistema: " + row.avgUsers());
+        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
+        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
+        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+
+        sc.close();
+
+    }
+
+    public static void optionFinitePopulationIServers() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int processing, requisition, populacao, user, servers;
+
+
+        System.out.println("requisições por segundo: ");
+        requisition = sc.nextInt();
+
+        System.out.println("capacidade de processamento por /s:  ");
+        processing = sc.nextInt();
+
+        System.out.println("Universo de Usuários: ");
+        populacao = sc.nextInt();
+
+        System.out.println("Quantidade de servidores: ");
+        servers = sc.nextInt();
+
+        System.out.println("Usuários: ");
+        user = sc.nextInt();
+
+
+        FinitePopulationIServers row = new FinitePopulationIServers(requisition, processing, populacao, servers );
+
+        System.out.println("Ro: " + row.ro());
+        System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
+        System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
+        System.out.println("Media de usuarios no sistema: " + row.avgUser());
+
+
+        sc.close();
+
+
+    }
+
 }
