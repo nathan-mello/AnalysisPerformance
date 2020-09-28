@@ -59,7 +59,14 @@ public class FiniteCapacityMServers {
     }
 
     public double ro() {
-        return (double) requisitions/(processing*servers);
+        double result = (double) requisitions/(processing*servers);
+
+        if(result<0)
+            return 0.0;
+        else if (result>1)
+            return 1;
+
+        return result;
     }
 
     public double noRequisitions() {
@@ -67,6 +74,7 @@ public class FiniteCapacityMServers {
         double p , result;
 
         p = ro();
+
         result = (1 - Math.pow(p , rowB-servers+1 ))
                 * (Math.pow(servers*p, servers));
 

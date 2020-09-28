@@ -71,7 +71,7 @@ public class FinitePopulationServer {
 
     public double nRequisitions(int n) {
         if (n <= population) {
-            return  Math.pow( (double) requisitions/population, n) *
+            return  Math.pow( (double) requisitions/processing, n) *
                     ((double) factorial(population)/factorial(population-n))
                             * noRequisitions();
         }

@@ -266,7 +266,7 @@ public class Menu {
         System.out.println(" %");
         System.out.printf("A probabilidade de n usuários no sistema: %.2f", row.nRequisitions(user));
         System.out.println(" %");
-        System.out.printf("A probabilidade de nenhum usuário no sistema: %.2f", row.noRequisitions());
+        System.out.printf("A probabilidade de nenhum usuário no sistema: %.5f", row.noRequisitions());
         System.out.println(" %");
         System.out.printf("Utilização: %.2f%n", row.utilization());
         System.out.printf("Taxa efetiva de chegada: %.2f%n", row.receivingRate());
@@ -287,24 +287,26 @@ public class Menu {
 
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = modulo(sc.nextInt());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = modulo(sc.nextInt());
 
         System.out.println("Universo de Usuários: ");
-        populacao = sc.nextInt();
-
+        populacao = modulo(sc.nextInt());
 
         System.out.println("Usuários: ");
-        user = sc.nextInt();
+        user = modulo(sc.nextInt());
 
 
         FinitePopulationIServers row = new FinitePopulationIServers(requisition, processing, populacao);
 
-        System.out.println("Ro: " + row.ro());
+        System.out.printf("Ro: %.2f", row.ro()*100);
+        System.out.println(" %");
+
         System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
         System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
+
         System.out.println("Media de usuarios no sistema: " + row.avgUser());
 
 

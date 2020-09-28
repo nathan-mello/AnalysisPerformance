@@ -38,23 +38,32 @@ public class FinitePopulationIServers {
         this.population = population;
     }
 
-    public double noRequisitions() {
-        return 1.0/Math.pow(1.0 + (double) requisitions/processing, population);
-    }
-
     public double nRequisitions(int n) {
         if (n<=population) {
-            return (Math.pow( (double) requisitions/processing, n) *
+            return (Math.pow( (double) (requisitions/processing), n) *
                     ((double) population/n)) /
-                    Math.pow(1.0 + (double) requisitions/processing, population);
+                    Math.pow(1.0 + (double) (requisitions/processing), population);
         }
         else {
             return 0.0;
         }
     }
 
+    public double noRequisitions() {
+
+        double result = 1.0 + (double) (requisitions/processing);
+        return 1.0/(Math.pow(result, population));
+    }
+
     public double ro() {
-        return (population*requisitions)/(1 + (double) requisitions/processing);
+        double result =  (population*requisitions)/(1 + (double) requisitions/processing);
+
+        if (result>=1.0) {
+            return 1.0;
+        } else if (result<=0.0) {
+            return 0.0;
+        }
+        return result;
     }
 
     public double avgUser() {
