@@ -2,6 +2,8 @@ package entities;
 
 public class InfiniteServers {
 
+    //Fila M/M/(infinitos) - Infinitos Servidores
+
     private int requisitions;
     private int processing;
 

@@ -2,6 +2,8 @@ package entities;
 
 public class MServers {
 
+    //Fila M/M/m - m-Servidores
+
     private int requisitions;
     private int processing;
     private int servers;

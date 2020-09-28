@@ -2,16 +2,16 @@ package entities;
 
 public class FinitePopulationIServers {
 
+    //Fila M/M/(infinitos)//K - População Finita com Infinitos Servidores
+
     private int requisitions;
     private int processing;
     private int population;
-    private int servers;
 
-    public FinitePopulationIServers(int requisitions, int processing, int population, int servers) {
+    public FinitePopulationIServers(int requisitions, int processing, int population) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.population = population;
-        this.servers = servers;
     }
 
     public int getRequisitions() {
@@ -38,14 +38,6 @@ public class FinitePopulationIServers {
         this.population = population;
     }
 
-    public int getServers() {
-        return servers;
-    }
-
-    public void setServers(int servers) {
-        this.servers = servers;
-    }
-
     public double noRequisitions() {
         return 1.0/Math.pow(1.0 + (double) requisitions/processing, population);
     }
@@ -54,7 +46,7 @@ public class FinitePopulationIServers {
         if (n<=population) {
             return (Math.pow( (double) requisitions/processing, n) *
                     ((double) population/n)) /
-                    Math.pow(1.0+ (double) requisitions/processing, population);
+                    Math.pow(1.0 + (double) requisitions/processing, population);
         }
         else {
             return 0.0;

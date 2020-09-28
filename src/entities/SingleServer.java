@@ -2,6 +2,8 @@ package entities;
 
 public class SingleServer {
 
+    //Fila M/M/1 - O Sistema Clássico
+
     private int requisitions;
     private int processing;
 

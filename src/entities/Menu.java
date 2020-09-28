@@ -222,7 +222,7 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, populacao, user, servers;
+        int processing, requisition, populacao, user;
 
 
         System.out.println("requisições por segundo: ");
@@ -234,14 +234,12 @@ public class Menu {
         System.out.println("Universo de Usuários: ");
         populacao = sc.nextInt();
 
-        System.out.println("Quantidade de servidores: ");
-        servers = sc.nextInt();
 
         System.out.println("Usuários: ");
         user = sc.nextInt();
 
 
-        FinitePopulationIServers row = new FinitePopulationIServers(requisition, processing, populacao, servers );
+        FinitePopulationIServers row = new FinitePopulationIServers(requisition, processing, populacao);
 
         System.out.println("Ro: " + row.ro());
         System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));

@@ -2,6 +2,8 @@ package entities;
 
 public class FinitePopulationServer {
 
+    // Fila M/M/1//K - População Finita com um Servidor
+
     private int requisitions;
     private int processing;
     private int population;
@@ -55,7 +57,7 @@ public class FinitePopulationServer {
         for(int n=0; n<=population; n++) {
 
             result = Math.pow((double) requisitions/processing, n) *
-                    ( (double) factorial(population)/factorial(population-n));
+                    ((double) factorial(population)/factorial(population-n));
         }
         return 1.0/result;
     }

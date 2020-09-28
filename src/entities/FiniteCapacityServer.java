@@ -2,6 +2,8 @@ package entities;
 
 public class FiniteCapacityServer {
 
+    //Fila M/M/1/B - Capacidade Finita
+
     private int requisitions;
     private int processing;
     private int rowB;
