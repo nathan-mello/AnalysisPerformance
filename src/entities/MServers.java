@@ -49,7 +49,17 @@ public class MServers {
     }
 
     public double ro(){
-        return (double) requisitions/(processing*servers);
+
+        double result = (double) requisitions/(processing*servers);
+
+        if (result<0.0) {
+            return 0.0;
+        }
+        else if (result>1.0) {
+            return 1.0;
+            }
+        return result;
+
     }
 
     public double noRequisitions(){
@@ -100,6 +110,6 @@ public class MServers {
     }
 
     public double avgWaitingTime() {
-        return  cErlang()/servers*processing*(1-ro());
+        return  cErlang()/(servers*processing*(1-ro()));
     }
 }

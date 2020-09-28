@@ -48,7 +48,14 @@ public class FinitePopulationServer {
     }
 
     public  double ro() {
-        return (double) requisitions/processing;
+        double result = (double) requisitions/processing;
+
+        if(result<0)
+            return 0.0;
+        else if (result>1)
+            return 1.0;
+
+        return result;
     }
 
     public double noRequisitions() {

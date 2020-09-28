@@ -4,6 +4,22 @@ import java.util.Scanner;
 
 public class Menu {
 
+    public static int modulo(int number){
+        if(number<0){
+            return number*-1;
+        }
+        return number;
+
+    }
+
+    public static double modulo(double number){
+        if(number<0.0){
+            return number*-1.0;
+        }
+        return number;
+
+    }
+
     public static void optionSingleServer(){
 
         Scanner sc = new Scanner(System.in);
@@ -11,25 +27,44 @@ public class Menu {
         int processing, requisition, user;
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = modulo(sc.nextInt());
+
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = modulo(sc.nextInt());
+
 
         System.out.println("Usuários: ");
-        user = sc.nextInt();
+        user = modulo(sc.nextInt());
+
 
         SingleServer row = new SingleServer(processing, requisition);
 
-        System.out.println("Intensidade de tráfego: "+ row.trafficIntensity());
-        System.out.println("nenhum usuário no sistema: "+ row.noUser());
-        System.out.println("N usuários no sistema: " + row.nUser(user));
-        System.out.println("N ou mais usuários no sistema: " + row.nMoreUser(user));
-        System.out.println("um ou mais usuários no sistema: "+ row.nMoreUser( 1));
-        System.out.println("Tempo médio de resposta: " + row.avgTime());
-        System.out.println("Tempo médio de espera na fila: " + row.avgTime());
-        System.out.println("Número médio de usuários: " + row.avgUser());
-        System.out.println("Número médio de requisições na fila:" + row.avgRequisition());
+
+        System.out.printf("Intensidade de tráfego: %.2f", row.trafficIntensity() * 100);
+        System.out.println(" %");
+
+        System.out.printf("nenhum usuário no sistema: %.2f", row.noUser()*100);
+        System.out.println(" %");
+
+        System.out.printf("N usuários no sistema: %.2f", row.nUser(user)*100);
+        System.out.println(" %");
+
+        System.out.printf("N ou mais usuários no sistema: %.2f", row.nMoreUser(user)*100);
+        System.out.println(" %");
+
+        System.out.printf("um ou mais usuários no sistema: %.2f", row.nMoreUser( 1)*100);
+        System.out.println(" %");
+
+        System.out.println("Tempo médio de resposta: "+ row.avgTime()+ "s");
+        System.out.println("Tempo médio de espera na fila: " + row.avgTime() + "s");
+        System.out.println("Número médio de usuários: "
+                + row.avgUser()
+                + " requisições");
+
+        System.out.println("Número médio de requisições na fila: "
+                + row.avgRequisition()
+                + " requisições");
 
 
         sc.close();
@@ -43,31 +78,43 @@ public class Menu {
 
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = modulo(sc.nextInt());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = modulo(sc.nextInt());
 
         System.out.println("Servidores: ");
-        server = sc.nextInt();
+        server = modulo(sc.nextInt());
 
         System.out.println("Usuários: ");
-        user = sc.nextInt();
-
+        user = modulo(sc.nextInt());
 
 
         MServers mserver = new MServers(requisition, processing, server);
 
-        System.out.println("Probabilidade de n requisições no sistema (Pn): " + mserver.nRequisitions(user));
-        System.out.println("Ro: " + mserver.ro());
-        System.out.println("Probabilidade de não existir requisição: " + mserver.noRequisitions());
-        System.out.println("C de Erlang: " + mserver.cErlang());
-        System.out.println("Número médio de requisições em espera: " + mserver.waitingRequests());
-        System.out.println("requisições em atendimento: " + mserver.serviceRequests());
-        System.out.println("Número de requisições: " + mserver.numberOfRequests());
-        System.out.println("Utilização: " + mserver.ro());
-        System.out.println("Tempo médio de resposta: " + mserver.avgTime());
-        System.out.println("Tempo médio de espera na fila: " + mserver.avgWaitingTime());
+
+        System.out.printf("Ro: %.2f", mserver.ro()*100);
+        System.out.println(" %");
+
+        System.out.printf("Probabilidade de não existir requisição: %.2f",
+                 mserver.noRequisitions()*100);
+        System.out.println(" %");
+
+        System.out.printf("Probabilidade de n requisições no sistema: %.2f",
+                mserver.nRequisitions(user)*100);
+        System.out.println(" %");
+
+        System.out.printf("C de Erlang: %.2f%n", mserver.cErlang());
+        System.out.printf("Número médio de requisições em espera: %.2f Requisições%n",
+                mserver.waitingRequests());
+
+        System.out.printf("requisições em atendimento: %.2f Requisições%n",
+                mserver.serviceRequests());
+
+        System.out.printf("Número de requisições: %.2f Requisições%n", mserver.numberOfRequests());
+        System.out.printf("Utilização: %.2f%n", mserver.ro());
+        System.out.printf("Tempo médio de resposta: %.2f s %n", mserver.avgTime());
+        System.out.printf("Tempo médio de espera na fila: %.2f s %n", mserver.avgWaitingTime());
 
         sc.close();
 
@@ -82,23 +129,25 @@ public class Menu {
 
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = modulo(sc.nextInt());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = modulo(sc.nextInt());
 
-        System.out.println("Probabilidade de 0 usuarios%: ");
-        noUser = sc.nextDouble();
+        System.out.println("Probabilidade de 0 usuarios: ");
+        noUser = modulo(sc.nextDouble());
 
         System.out.println("Usuários: ");
-        user = sc.nextInt();
+        user = modulo(sc.nextInt());
 
         InfiniteServers infiniteServers = new InfiniteServers(requisition,processing);
 
-        System.out.println("Ro: "+ infiniteServers.ro());
-        System.out.println("5 usuarios: " + infiniteServers.nRequisitions(user, noUser));
-        System.out.println("numero media de suarios: " + infiniteServers.ro());
-        System.out.println("tempo medio: " + infiniteServers.avgTime());
+        System.out.printf("Ro: %.2f", infiniteServers.ro()*100);
+        System.out.println(" %");
+        System.out.printf("N usuarios: %.2f", infiniteServers.nRequisitions(user, noUser)*100);
+        System.out.println(" %");
+        System.out.printf("numero media de suarios: %.2f%n", infiniteServers.avgUsers());
+        System.out.printf("tempo medio: %.2f%n", infiniteServers.avgTime());
 
 
         sc.close();
@@ -112,33 +161,35 @@ public class Menu {
 
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = modulo(sc.nextInt());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = modulo(sc.nextInt());
 
         System.out.println("B: ");
-        rowB = sc.nextInt();
-
-        System.out.println("Servidor: ");
-        server = sc.nextInt();
+        rowB = modulo(sc.nextInt());
 
         System.out.println("Usuarios: ");
-        user = sc.nextInt();
+        user = modulo(sc.nextInt());
 
-        FiniteCapacityServer row = new FiniteCapacityServer(requisition, processing, rowB, server);
+        FiniteCapacityServer row = new FiniteCapacityServer(requisition, processing, rowB);
 
+        System.out.printf("Variável 'rô': %.2f", row.ro()*100);
+        System.out.println(" %");
 
-        System.out.println("Probabilidade de n usuários no Sistema: " + row.NRequisitions(user));
-        System.out.println("Variável 'rô': " + row.ro());
-        System.out.println("Probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
-        System.out.println("Utilização: " + row.utilization());
-        System.out.println("Taxa Efetiva de chegada: " + row.receivingRate());
-        System.out.println("Taxa de perda: " + row.lossRate());
-        System.out.println("Número  médio de usuários do Sistema: " + row.avgUsers());
-        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
-        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
-        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+        System.out.printf("Probabilidade de n usuários no Sistema: %.2f", row.NRequisitions(user)*100);
+        System.out.println(" %");
+
+        System.out.printf("Probabilidade de nenhum usuário no sistema: %.2f", row.noRequisitions()*100);
+        System.out.println(" %");
+
+        System.out.printf("Utilização: %.2f%n", row.utilization());
+        System.out.printf("Taxa Efetiva de chegada: %.2f%n", row.receivingRate());
+        System.out.printf("Taxa de perda: %.2f%n", row.lossRate());
+        System.out.printf("Número  médio de usuários do Sistema: %.2f%n", row.avgUsers());
+        System.out.printf("Número médio de usuários na fila: %.2f%n", row.avgUsersQueue());
+        System.out.printf("Tempo médio de resposta: %.2f%n", row.avgResponseTime());
+        System.out.printf("Tempo médio de espera: %.2f%n", row.avgWaitingTime());
 
         sc.close();
 
@@ -168,15 +219,22 @@ public class Menu {
         FiniteCapacityMServers row = new FiniteCapacityMServers(requisition, processing, rowB, server);
 
 
-        System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
-        System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
-        System.out.println("Utilização: " + row.utilization());
-        System.out.println("Taxa efetiva de chegada: " + row.receivingRate());
-        System.out.println("Taxa de Perda: " + row.lossRate());
-        System.out.println("Número médio de usuários no sistema: " + row.avgUsers());
-        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
-        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
-        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+        System.out.printf("Ro: %.2f", row.ro());
+        System.out.println(" %");
+
+        System.out.printf("A probabilidade de n usuários no sistema: %.2f", row.nRequisitions(user));
+        System.out.println(" %");
+
+        System.out.printf("A probabilidade de nenhum usuário no sistema: %.2f", row.noRequisitions());
+        System.out.println(" %");
+
+        System.out.printf("Utilização: %.2f%n", row.utilization());
+        System.out.printf("Taxa efetiva de chegada: %.2f%n", row.receivingRate());
+        System.out.printf("Taxa de Perda: %.2f%n", row.lossRate());
+        System.out.printf("Número médio de usuários no sistema: %.2f%n", row.avgUsers());
+        System.out.printf("Número médio de usuários na fila: %.2f%n", row.avgUsersQueue());
+        System.out.printf("Tempo médio de resposta: %.2f%n", row.avgResponseTime());
+        System.out.printf("Tempo médio de espera: %.2f%n", row.avgWaitingTime());
 
         sc.close();
 
@@ -204,15 +262,18 @@ public class Menu {
 
         FinitePopulationServer row = new FinitePopulationServer(requisition, processing, populacao);
 
-        System.out.println("Ro: " + row.ro());
-        System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
-        System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
-        System.out.println("Utilização: " + row.utilization());
-        System.out.println("Taxa efetiva de chegada: " + row.receivingRate());
-        System.out.println("Número médio de usuários no sistema: " + row.avgUsers());
-        System.out.println("Número médio de usuários na fila: " + row.avgUsersQueue());
-        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
-        System.out.println("Tempo médio de espera: " + row.avgWaitingTime());
+        System.out.printf("Ro: %.2f", row.ro());
+        System.out.println(" %");
+        System.out.printf("A probabilidade de n usuários no sistema: %.2f", row.nRequisitions(user));
+        System.out.println(" %");
+        System.out.printf("A probabilidade de nenhum usuário no sistema: %.2f", row.noRequisitions());
+        System.out.println(" %");
+        System.out.printf("Utilização: %.2f%n", row.utilization());
+        System.out.printf("Taxa efetiva de chegada: %.2f%n", row.receivingRate());
+        System.out.printf("Número médio de usuários no sistema: %.2f%n", row.avgUsers());
+        System.out.printf("Número médio de usuários na fila: %.2f%n", row.avgUsersQueue());
+        System.out.printf("Tempo médio de resposta: %.2f%n", row.avgResponseTime());
+        System.out.printf("Tempo médio de espera: %.2f%n", row.avgWaitingTime());
 
         sc.close();
 

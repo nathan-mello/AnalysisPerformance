@@ -39,11 +39,22 @@ public class InfiniteServers {
     }
 
     public  double ro() {
-        return (double) requisitions/processing;
+        double result = (double) requisitions/processing;
+
+        if(result<0)
+            return 0.0;
+        else if (result>1)
+            return 1.0;
+
+        return result;
     }
 
     public double nRequisitions (int n, double use) {
         return (Math.pow(ro(), n)/ factorial(n))*(use);
+    }
+
+    public double avgUsers () {
+        return (double) requisitions/processing;
     }
 
     public double avgTime() {

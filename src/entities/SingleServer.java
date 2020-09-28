@@ -29,13 +29,20 @@ public class SingleServer {
     }
 
     public double trafficIntensity(){
-        return (double) requisitions/processing;
+        double result = (double) requisitions/processing;
+
+        if (result<0) {
+            return 0.0;
+        }
+        else if (result>1) {
+            return 1.0;
+        }
+
+        return result;
+
     }
 
     public double noUser(){
-        if(trafficIntensity()>1){
-            return 1.0;
-        }
         return 1.0 - trafficIntensity();
     }
 

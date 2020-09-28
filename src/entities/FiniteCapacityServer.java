@@ -7,13 +7,13 @@ public class FiniteCapacityServer {
     private int requisitions;
     private int processing;
     private int rowB;
-    private int servers;
 
-    public FiniteCapacityServer(int requisitions, int processing, int rowB, int servers) {
+
+    public FiniteCapacityServer(int requisitions, int processing, int rowB) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.rowB = rowB;
-        this.servers = servers;
+
     }
 
     public int getRequisitions() {
@@ -40,16 +40,15 @@ public class FiniteCapacityServer {
         this.rowB = rowB;
     }
 
-    public int getServers() {
-        return servers;
-    }
-
-    public void setServers(int servers) {
-        this.servers = servers;
-    }
-
     public double ro(){
-        return (double) requisitions/(processing);
+        double result = (double) requisitions/processing;
+
+        if(result<0)
+            return 0.0;
+        else if (result>1)
+            return 1.0;
+
+        return result;
     }
 
     public double noRequisitions() {
@@ -58,7 +57,13 @@ public class FiniteCapacityServer {
     }
 
     public double NRequisitions(int n) {
-        return noRequisitions()*Math.pow(ro(), n);
+
+        if(n<=rowB) {
+            return noRequisitions()*Math.pow(ro(), n);
+        }
+        else
+            return 0.0;
+
     }
 
     public double utilization() {
