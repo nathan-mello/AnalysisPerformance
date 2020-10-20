@@ -138,7 +138,4 @@ public class FiniteCapacityMServers {
     public  double avgWaitingTime() {
         return avgUsersQueue()/(requisitions*(1-nRequisitions(rowB)));
     }
-
-
-
 }
