@@ -2,15 +2,17 @@ package entities;
 
 public class FiniteCapacityPopulationMServers {
 
-    private int requisitions;
-    private int processing;
+    // M/M/m/B/K - m-Senvidores com Capacidade e População Finitos
+
+    private double requisitions;
+    private double processing;
     private int population;
     private int rowB;
     private int servers;
-    private int noRequisitions;
+    private double noRequisitions;
 
-    public FiniteCapacityPopulationMServers(int requisitions, int processing, int population,
-                                            int rowB, int servers, int noRequisitions) {
+    public FiniteCapacityPopulationMServers(double requisitions, double processing, int population,
+                                            int rowB, int servers, double noRequisitions) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.population = population;
@@ -19,7 +21,7 @@ public class FiniteCapacityPopulationMServers {
         this.noRequisitions = noRequisitions;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -27,7 +29,7 @@ public class FiniteCapacityPopulationMServers {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 
@@ -59,7 +61,7 @@ public class FiniteCapacityPopulationMServers {
         this.servers = servers;
     }
 
-    public int getNoRequisitions() {
+    public double getNoRequisitions() {
         return noRequisitions;
     }
 
@@ -114,6 +116,14 @@ public class FiniteCapacityPopulationMServers {
     }
 
     public double receivingRate(){
-        return  1.0;
+        return  requisitions*(population -avgUsers());
+    }
+
+    public double avgUsersQueue(){
+        return avgUsers()/receivingRate();
+    }
+
+    public double avgResponseTime() {
+        return  avgUsers()/ requisitions*(population-avgUsers()-(population-rowB)*nRequisitions(rowB));
     }
 }

@@ -4,15 +4,15 @@ public class SingleServer {
 
     //Fila M/M/1 - O Sistema Clássico
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
 
-    public SingleServer(int processing, int requisitions) {
+    public SingleServer(double processing, double requisitions) {
         this.processing = processing;
         this.requisitions = requisitions;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -20,7 +20,7 @@ public class SingleServer {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 
@@ -31,10 +31,10 @@ public class SingleServer {
     public double trafficIntensity(){
         double result = (double) requisitions/processing;
 
-        if (result<0) {
+        if (result<0.0) {
             return 0.0;
         }
-        else if (result>1) {
+        else if (result>1.0) {
             return 1.0;
         }
 

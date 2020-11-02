@@ -4,17 +4,17 @@ public class FinitePopulationIServers {
 
     //Fila M/M/(infinitos)//K - População Finita com Infinitos Servidores
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
     private int population;
 
-    public FinitePopulationIServers(int requisitions, int processing, int population) {
+    public FinitePopulationIServers(double requisitions, double processing, int population) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.population = population;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -22,7 +22,7 @@ public class FinitePopulationIServers {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 

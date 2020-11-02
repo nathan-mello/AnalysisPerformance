@@ -4,19 +4,19 @@ public class FiniteCapacityMServers {
 
     //Fila M/M/m/B - m-Servidores com Capacidade Finita
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
     private int rowB;
     private int servers;
 
-    public FiniteCapacityMServers(int requisitions, int processing, int rowB, int servers) {
+    public FiniteCapacityMServers(double requisitions, double processing, int rowB, int servers) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.rowB = rowB;
         this.servers = servers;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -24,7 +24,7 @@ public class FiniteCapacityMServers {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 

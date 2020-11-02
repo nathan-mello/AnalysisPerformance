@@ -4,17 +4,17 @@ public class MServers {
 
     //Fila M/M/m - m-Servidores
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
     private int servers;
 
-    public MServers(int requisitions, int processing, int servers) {
+    public MServers(double requisitions, double processing, int servers) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.servers = servers;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -22,7 +22,7 @@ public class MServers {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 

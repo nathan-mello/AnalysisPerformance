@@ -4,19 +4,19 @@ public class FiniteCapacityServer {
 
     //Fila M/M/1/B - Capacidade Finita
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
     private int rowB;
 
 
-    public FiniteCapacityServer(int requisitions, int processing, int rowB) {
+    public FiniteCapacityServer(double requisitions, double processing, int rowB) {
         this.requisitions = requisitions;
         this.processing = processing;
         this.rowB = rowB;
 
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -24,7 +24,7 @@ public class FiniteCapacityServer {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 

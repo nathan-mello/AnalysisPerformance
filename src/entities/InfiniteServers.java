@@ -4,15 +4,15 @@ public class InfiniteServers {
 
     //Fila M/M/(infinitos) - Infinitos Servidores
 
-    private int requisitions;
-    private int processing;
+    private double requisitions;
+    private double processing;
 
-    public InfiniteServers(int requisitions, int processing) {
+    public InfiniteServers(double requisitions, double processing) {
         this.requisitions = requisitions;
         this.processing = processing;
     }
 
-    public int getRequisitions() {
+    public double getRequisitions() {
         return requisitions;
     }
 
@@ -20,7 +20,7 @@ public class InfiniteServers {
         this.requisitions = requisitions;
     }
 
-    public int getProcessing() {
+    public double getProcessing() {
         return processing;
     }
 

@@ -24,14 +24,16 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, user;
+
+        int  user;
+        double requisition, processing;
 
         System.out.println("requisições por segundo: ");
-        requisition = modulo(sc.nextInt());
+        requisition = sc.nextDouble();
 
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = modulo(sc.nextInt());
+        processing = sc.nextDouble();
 
 
         System.out.println("Usuários: ");
@@ -39,6 +41,8 @@ public class Menu {
 
 
         SingleServer row = new SingleServer(processing, requisition);
+
+        System.out.println(row.getProcessing());
 
 
         System.out.printf("Intensidade de tráfego: %.2f", row.trafficIntensity() * 100);
@@ -74,14 +78,14 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, server, user;
-
+        int  server, user;
+        double requisition, processing;
 
         System.out.println("requisições por segundo: ");
-        requisition = modulo(sc.nextInt());
+        requisition = sc.nextDouble();
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = modulo(sc.nextInt());
+        processing = sc.nextDouble();
 
         System.out.println("Servidores: ");
         server = modulo(sc.nextInt());
@@ -124,15 +128,15 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, user;
-        double noUser;
+        int user;
+        double processing, requisition, noUser;
 
 
         System.out.println("requisições por segundo: ");
-        requisition = modulo(sc.nextInt());
+        requisition = modulo(sc.nextDouble());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = modulo(sc.nextInt());
+        processing = modulo(sc.nextDouble());
 
         System.out.println("Probabilidade de 0 usuarios: ");
         noUser = modulo(sc.nextDouble());
@@ -157,14 +161,14 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition,server, user, rowB;
-
+        int server, user, rowB;
+        double processing, requisition;
 
         System.out.println("requisições por segundo: ");
-        requisition = modulo(sc.nextInt());
+        requisition = modulo(sc.nextDouble());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = modulo(sc.nextInt());
+        processing = modulo(sc.nextDouble());
 
         System.out.println("B: ");
         rowB = modulo(sc.nextInt());
@@ -198,14 +202,14 @@ public class Menu {
     public static void optionFiniteCapacityMServer() {
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition,server, user, rowB;
-
+        int server, user, rowB;
+        double processing, requisition;
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = sc.nextDouble();
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = sc.nextDouble();
 
         System.out.println("B: ");
         rowB = sc.nextInt();
@@ -244,14 +248,14 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, populacao, user;
-
+        int populacao, user;
+        double processing, requisition;
 
         System.out.println("requisições por segundo: ");
-        requisition = sc.nextInt();
+        requisition = sc.nextDouble();
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = sc.nextInt();
+        processing = sc.nextDouble();
 
         System.out.println("Universo de Usuários: ");
         populacao = sc.nextInt();
@@ -283,14 +287,14 @@ public class Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        int processing, requisition, populacao, user;
-
+        int populacao, user;
+        double processing, requisition;
 
         System.out.println("requisições por segundo: ");
-        requisition = modulo(sc.nextInt());
+        requisition = modulo(sc.nextDouble());
 
         System.out.println("capacidade de processamento por /s:  ");
-        processing = modulo(sc.nextInt());
+        processing = modulo(sc.nextDouble());
 
         System.out.println("Universo de Usuários: ");
         populacao = modulo(sc.nextInt());
@@ -306,8 +310,8 @@ public class Menu {
 
         System.out.println("A probabilidade de n usuários no sistema: " + row.nRequisitions(user));
         System.out.println("A probabilidade de nenhum usuário no sistema: " + row.noRequisitions());
-
         System.out.println("Media de usuarios no sistema: " + row.avgUser());
+
 
 
         sc.close();
@@ -315,4 +319,42 @@ public class Menu {
 
     }
 
+    public static void optionFinitePopulationMServers() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int populacao, rowB, server, user;
+        double processing, requisition, ro;
+
+        System.out.println("requisições por segundo: ");
+        requisition = sc.nextDouble();
+
+        System.out.println("capacidade de processamento por /s:  ");
+        processing = sc.nextDouble();
+
+        System.out.println("Universo de Usuários: ");
+        populacao = sc.nextInt();
+
+        System.out.println("B: ");
+        rowB = sc.nextInt();
+
+        System.out.println("server: ");
+        server = sc.nextInt();
+
+        System.out.println("Probabilidade de 0 usuarios no sistema: ");
+        ro = sc.nextDouble();
+
+        System.out.println("Usuários: ");
+        user = sc.nextInt();
+
+        FiniteCapacityPopulationMServers row = new FiniteCapacityPopulationMServers(requisition, processing, populacao,
+                rowB, server, ro);
+
+        System.out.println("Intensidade de tráfego: " + row.ro());
+        System.out.println("Utilização: " + row.utilization());
+        System.out.println("Número médio de usuários no sistema: " + row.avgUsers());
+        System.out.println("Tempo médio de espera na fila: " + row.avgUsersQueue());
+        System.out.println("Tempo médio de resposta: " + row.avgResponseTime());
+        System.out.println("Taxa efetiva de chegadas: " + row.receivingRate());
+    }
 }

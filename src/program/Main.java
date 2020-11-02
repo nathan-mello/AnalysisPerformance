@@ -16,6 +16,7 @@ public class Main {
                           + "5 - m-Servidores com Capacidade Finita\n"
                           + "6 - População Finita com um Servidor\n"
                           + "7 - População Finita com Infinitos Servidores\n"
+                          + "8 - M Senidores com Capacidade e População Finitos\n"
                           + "------------------------------------\n");
 
         int option = scn.nextInt();
@@ -41,6 +42,9 @@ public class Main {
 
         else if (option == 7)
             Menu.optionFinitePopulationIServers();
+
+        else if (option ==8)
+            Menu.optionFinitePopulationMServers();
 
         scn.close();
 
